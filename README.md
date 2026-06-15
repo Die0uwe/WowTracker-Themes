@@ -1,43 +1,46 @@
 # WowTracker-Themes
 
-Community themes for [WowTracker](https://github.com/Die0uwe/WowTracker) — the WoW addon suite for Slayer Alliance.
+Community theme packs for [WowTracker](https://github.com/Die0uwe/WowTracker) — Slayer Alliance Edition.
 
-## How to create your guild theme
+## Built-in Themes (v3.5.5)
 
-1. **Fork** this repository
-2. Copy `themes/template.lua` → `themes/YourGuildName.lua`
-3. Edit colors and settings
-4. Submit a **Pull Request** to share with the community!
+WowTracker ships with 11 built-in themes:
 
-## Theme format
+| Theme | Category | Style |
+|---|---|---|
+| Slayer Alliance | Dark | Neon purple · Dark — *default* |
+| Midnight Dark | Dark | Deep blue |
+| Horde Red | Dark | Blood red · Gold |
+| Alliance Blue | Cool | Crystal blue · Navy |
+| Elven | Nature | Forest green · Silver |
+| Void | Dark | Cosmic purple · Shadow |
+| Industrial Steam | Warm | Bronze · Amber |
+| Scrollwork | Warm | Brass · Parchment |
+| **Titan Bronze** ⭐ | Premium | Titan architecture · Gold |
+| **Void Reborn** ⭐ | Premium | Cosmic void · Rune energy |
+| **Emerald Elven** ⭐ | Premium | Night Elf · Emerald crystal |
 
+## Creating a Custom Theme
+
+See `templates/theme-template.lua` for the full theme structure.
+
+Required blocks per theme:
+- `c = {}` — color strings for FontStrings
+- `r = {}` — RGB tables for SetBackdropColor
+- `bg = {}` — background colors (main, header, card, cardHover, row, rowHover)
+- `border = {}` — border colors (main, card, active, subtle, nemesis, bountiful, normal)
+- `tab = {}` — tab states (active_bg, active_border, inactive_bg, inactive_border)
+- `r.accent / r.accentGlow / r.accentDark` — accent colors for live reload
+- `meta = {}` — displayName, author, version, category, description
+- `font` — always `"Fonts\\2002.ttf"`
+
+## Usage
+
+Place your theme file in `WowTracker/Plugins/Theme/` and register it:
 ```lua
-local theme = {
-    name     = "Your Guild",
-    author   = "YourName-Server",
-    bg       = {0.04, 0.02, 0.08, 0.97},   -- r,g,b,alpha
-    border   = {0.25, 0.07, 0.40, 1.0},
-    colorPrimary = "|cffa335ee",            -- WoW color string
-    colorGold    = "|cffccaa00",
-    font     = "Fonts\\2002.ttf",
-}
-return theme
+THEMES["My Theme"] = { ... }
+ICON_THEME_MAP["My Theme"] = "my_theme"  -- matches icon filenames
 ```
 
-## Included themes
-
-| Theme | Style |
-|-------|-------|
-| SA Dark | Deep purple (default) |
-| ProfBuddy Purple | Warm purple |
-| MailVault Blue | Cool blue |
-| Night Black | Minimal dark |
-
-## Coming soon
-
-- **Web theme builder** — slayeralliance.com/wowtracker/themes
-- Live preview in-game
-- Guild logo/banner support
-
-## Links
-[WowTracker](https://github.com/Die0uwe/WowTracker) · [Slayer Alliance](https://slayeralliance.com) · [Discord](https://discord.gg/y8Pu5qsEbQ)
+---
+*WowTracker-Themes · © 2026 DieOuwe · GPL-3.0*
